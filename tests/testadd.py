@@ -19,12 +19,10 @@ class addItems(TestCase):
 
         self.user = MyUser.objects.create(name="one", password="one")
         Stuff(name="cat", owner=self.user).save()
-
-
-    def test_something(self):
          session = self.client.session
          session['somekey'] = 'test'
          session.save()
+
     def test_add_item(self):
         session = self.client.session
         session['user'] = self.user.name
