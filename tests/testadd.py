@@ -17,17 +17,14 @@ class addItems(TestCase):
     def setUp(self):
         self.client = Client()
 
-        self.user = MyUser.objects.create(name="one", password="one")
+        u = MyUser(name="one", password="one")
+        u.save()
         Stuff(name="cat", owner=self.user).save()
          session = self.client.session
          session['somekey'] = 'test'
          session.save()
 
     def test_add_item(self):
-        session = self.client.session
-        session['user'] = self.user.name
-        session.save()
-
 
         response = self.client.post('/things/', {'stuff': 'dragonfruit'}, follow=True)
 
