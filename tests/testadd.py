@@ -40,6 +40,7 @@ class addItems(TestCase):
         self.assertContains(response, 'dragonfruit')
 
 
+
         self.assertTrue(Stuff.objects.filter(name='dragonfruit', owner=self.user).exists())
 
     def test_add_blank_item(self):
